@@ -32,8 +32,8 @@ server {
     location ~ \.php$ {
 
         set $temp $request;
-        if ($temp ~ (.*)accesstoken=[^&]*(.*)) {
-            set $temp $1accesstoken=*$2;
+        if ($temp ~ (.*)jwtAuthorization=[^&]*(.*)) {
+            set $temp $1jwtAuthorization=*$2;
         }
 
         access_log /var/log/nginx/localhost.com-access.log mainproxy;
