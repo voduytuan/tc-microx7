@@ -10,8 +10,8 @@ RUN easy_install supervisor
 RUN pip install envtpl
 
 
-# tweak php-fpm config (base on 20MB/process and 1700MB Memory, not include about 200MB for system services)
-RUN sed -i -e "s/pm.max_children = 5/pm.max_children = 85/g" /etc/php/7.0/fpm/pool.d/www.conf && \
+# tweak php-fpm config (base on 20MB/process and 800MB Memory, not include about 200MB for system services)
+RUN sed -i -e "s/pm.max_children = 5/pm.max_children = 40/g" /etc/php/7.0/fpm/pool.d/www.conf && \
 sed -i -e "s/pm.start_servers = 2/pm.start_servers = 8/g" /etc/php/7.0/fpm/pool.d/www.conf && \
 sed -i -e "s/pm.min_spare_servers = 1/pm.min_spare_servers = 8/g" /etc/php/7.0/fpm/pool.d/www.conf && \
 sed -i -e "s/pm.max_spare_servers = 3/pm.max_spare_servers = 20/g" /etc/php/7.0/fpm/pool.d/www.conf && \
