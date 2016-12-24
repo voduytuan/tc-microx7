@@ -39,7 +39,7 @@ server {
         access_log /var/log/nginx/localhost.com-access.log mainproxy;
 
         # With php7.0-fpm:
-        fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
         fastcgi_index index.php;
         include fastcgi_params;
         include fastcgi.conf;
