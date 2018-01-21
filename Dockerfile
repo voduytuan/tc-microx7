@@ -13,9 +13,7 @@ sed -i -e "s/pm.min_spare_servers = 1/pm.min_spare_servers = 16/g" /etc/php/7.0/
 sed -i -e "s/pm.max_spare_servers = 3/pm.max_spare_servers = 40/g" /etc/php/7.0/fpm/pool.d/www.conf && \
 sed -i -e "s/;pm.max_requests = 500/pm.max_requests = 2000/g" /etc/php/7.0/fpm/pool.d/www.conf && \
 sed -i -e "s/;pm.status_path = \/status/pm.status_path = \/fpmstatus/g" /etc/php/7.0/fpm/pool.d/www.conf && \
-sed -i -e "s/;ping.path = \/ping/ping.path = \/fpmping/g" /etc/php/7.0/fpm/pool.d/www.conf && \
-sed -i -e "s/;slowlog = log\/\$pool.log.slow/slowlog = \/var\/log\/nginx\/slow.log /g" /etc/php/7.0/fpm/pool.d/www.conf && \
-sed -i -e "s/;request_slowlog_timeout = 0/request_slowlog_timeout = 15/g" /etc/php/7.0/fpm/pool.d/www.conf
+sed -i -e "s/;ping.path = \/ping/ping.path = \/fpmping/g" /etc/php/7.0/fpm/pool.d/www.conf
 
 # nginx vhost config
 ADD default /etc/nginx/sites-available/default
@@ -32,5 +30,6 @@ RUN chmod +x /var/startup.sh
 # Copy update script to download config
 ADD config.sh      /var/config.sh
 RUN chmod +x /var/config.sh
+
 
 CMD [ "/var/startup.sh" ]

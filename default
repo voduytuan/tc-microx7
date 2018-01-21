@@ -1,4 +1,4 @@
-log_format mainproxy '$http_x_forwarded_for - $remote_user [$time_local] ' '"$temp" $status $body_bytes_sent "$http_referer" ' '"$http_user_agent"' ;
+log_format mainproxy '$http_x_forwarded_for - $remote_user [$time_local] ' '"$temp" $status $body_bytes_sent $upstream_response_time "$http_referer" ' '"$http_user_agent"' ;
 
 server {
     listen  80;
